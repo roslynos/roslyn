@@ -1,6 +1,6 @@
 # RoslynOS Build System
 
-RoslynOS is a free and open-source .NET runtime platform based on OpenEmbedded and optimized of IoT.
+RoslynOS is a free and open-source [.NET runtime](https://dotnet.microsoft.com/) platform based on OpenEmbedded and optimized for IoT.
 
 You can fully build a flashable image from source with the following commands, but be careful it will take several hours:
 
@@ -16,7 +16,7 @@ git config --global user.name "Your Name"
 Clone the main repository using the following command:
 
 ```bash
-git clone https://github.com/RoslynOS/roslyn.git
+git clone https://github.com/roslynos/roslyn.git
 ```
 
 Before you continue to Build, make sure you're in the roslyn directory:
@@ -28,10 +28,13 @@ $ ./run-build.sh
 ```
 
 ## Update the Sources
-You can update the AsteroidOS sources with the following command:
+You can update the RoslynOS sources with the following command:
 ```bash
 ./repo-mgr.sh update
 ```
+
+# Licenses
+A RoslynOS image is made of plenty of components and it’s hard to describe the full details of all the licenses that are in use in the system. However, when building the system from sources with OpenEmbedded, one can find the exhaustive set of licenses used by each package in the `build/tmp-glibc/deploy/licenses directory`.
 
 # Give a Star! :star:
 
