@@ -93,6 +93,9 @@ init() {
 
     _parse_conf
     _clone
+
+    cp ./poky/meta-roslynos/build/conf/default.local.conf ./build/conf/local.conf
+    cp ./poky/meta-roslynos/build/conf/default.bblayers.conf ./build/conf/bblayers.conf
 }
 
 if [[ $# -eq 0 ]] ; then
