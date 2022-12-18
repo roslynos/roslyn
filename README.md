@@ -5,15 +5,13 @@ RoslynOS is a open-source [.NET runtime](https://dotnet.microsoft.com/) platform
 RoslynOS Linux is built around busybox and systemd. This makes it small and very resource efficient. A bare metal deployment requires no more than 8 MB memory and a minimal installation to disk requires around 200 MB of storage. Devices typically take about 12 seconds to boot.
 
 ## Supported Single Board Computers
-- [Raspberry Pi 3 Model B](https://www.raspberrypi.com/products/raspberry-pi-3-model-b/)
-
-- [Raspberry Pi 3 Model B+](https://www.raspberrypi.com/products/raspberry-pi-3-model-b-plus//)
+- [Raspberry Pi 3 Model B / B+](https://www.raspberrypi.com/products/raspberry-pi-3-model-b-plus/)
 
 - [Raspberry Pi 4 Model B](https://www.raspberrypi.com/products/raspberry-pi-3-model-b/)
 
 - [Seed ReTerminal](https://www.seeedstudio.com/ReTerminal-with-CM4-p-4904.html)
 
-You can [download](https://github.com/roslynos/roslyn/releases) prebuilt images or  fully build a flashable image from source with the following commands, but be careful it will take several hours:
+You can [download](https://github.com/roslynos/roslyn/releases) prebuilt images or fully build a flashable image from source with the following commands, but be careful it will take several hours:
 
 NOTE: THESE IMAGES ARE BETA AND AT THIS POINT DO NOT INCLUDED ANY SECURITY HARDENING. USE AT YOUR OWN RISK.
 
@@ -57,7 +55,7 @@ Contributions to this project are always welcome. Please consider forking this p
 
 # Licenses
 
-A RoslynOS image is made of many components and it’s hard to describe the full details of all the licenses that are in use in the system. However, when building the system from sources with OpenEmbedded, one can find the exhaustive set of licenses used by each package in the `build/tmp-glibc/deploy/licenses` directory.
+A RoslynOS image is made of many components and it’s hard to describe the full details of all the licenses that are in use in the system. However, when building the system from sources with OpenEmbedded, one can find the exhaustive set of licenses used by each package in the `build/tmp/deploy/licenses` directory.
 
 # Disclaimer
 
