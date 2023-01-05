@@ -17,6 +17,8 @@ SYSLINUX_TIMEOUT ?= "0"
 
 # Additional application configuration
 CORE_IMAGE_EXTRA_INSTALL += "\
+    libgpiod \
+    libgpiod-dev \
     roslynos-core-packagegroup \
     roslynos-base-packagegroup \
     roslynos-dotnet-packagegroup \

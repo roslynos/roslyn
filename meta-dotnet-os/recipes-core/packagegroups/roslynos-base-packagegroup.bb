@@ -31,7 +31,6 @@ RDEPENDS:roslynos-base-connectivity = "\
 
 SUMMARY:roslynos-base-gpio = "Gpio Packages"
 RDEPENDS:roslynos-base-gpio = "\
-	libgpiod \
 	libgpiod-tools \
 	i2c-tools"
 

@@ -11,6 +11,8 @@ inherit deviceos-users
 
 # Additional application configuration
 CORE_IMAGE_EXTRA_INSTALL += "\
+    libgpiod \
+    libgpiod-dev \
     roslynos-core-packagegroup \
     roslynos-base-packagegroup \
     roslynos-debug-packagegroup \
