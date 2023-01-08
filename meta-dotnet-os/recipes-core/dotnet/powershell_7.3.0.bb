@@ -6,20 +6,20 @@ LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda
 SRC_URI[sha256sum] = "dc84e26df576ef8cc353850eeb5f6659f322ff999913442f472b158f943d109f"
 SRC_URI = "https://github.com/PowerShell/PowerShell/releases/download/v7.3.0/powershell-7.3.0-linux-arm64.tar.gz;unpack=0"
 
-INSANE_SKIP:${PN} += "libdir"
-
-DEPENDS = "patchelf-native"
+COMPATIBLE_HOST ?= "(aarch64).*-linux"
 
 RDEPENDS:${PN} = "\
-    zlib \
+    dotnet-runtime \
 "
 
 FILES:${PN} += "\
     ${datadir}/powershell \
 "
 
-# do_configure[noexec] = "1"
-# do_compile[noexec] = "1"
+INSANE_SKIP:${PN} = "file-rdeps libdir"
+
+do_configure[noexec] = "1"
+do_compile[noexec] = "1"
 
 do_install() {
     
@@ -27,10 +27,8 @@ do_install() {
     tar --no-same-owner -xpvzf ${WORKDIR}/powershell-${PV}-linux-arm64.tar.gz -C ${D}${datadir}/powershell
     chmod +x ${D}${datadir}/powershell/pwsh
 
+    # Symlinks
     install -d ${D}${bindir}
     ln -rs ${D}${datadir}/powershell/pwsh ${D}${bindir}/pwsh
-
-    # Hack to fix liblttng-ust dependency issues
-    patchelf --remove-needed liblttng-ust.so.0 ${D}${datadir}/powershell/libcoreclrtraceptprovider.so
 
 }

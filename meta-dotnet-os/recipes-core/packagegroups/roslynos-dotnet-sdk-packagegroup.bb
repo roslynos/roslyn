@@ -5,6 +5,5 @@ PACKAGE_ARCH = "${MACHINE_ARCH}"
 inherit packagegroup
 
 RDEPENDS:${PN} = "\
-    vsdbg \
-    powershell \
+    dotnet-vsdbg \
     dotnet-sdk"

@@ -3,23 +3,20 @@ HOMEPAGE = "https://dotnet.microsoft.com/en-us/download/dotnet/7.0"
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda2f7b4f302"
 
-DOTNET_FETCH_ID = "47337472-c910-4815-9d9b-80e1a30fcf16/14847f6a51a6a7e53a859d4a17edc311"
+DOTNET_FETCH_ID = "caa0e6fb-770c-4b21-ba55-30154a7a9e11/3231af451861147352aaf43cf23b16ea"
 
-SRC_URI[sha256sum] = "ef675d0b2f3012b8ac0c67952c752f8646decf3d68713b17d7bf45dfaf476441"
+SRC_URI[sha256sum] = "45417621eeae8344d228be4bba284e8cc6d4523699c6e27db3d7ecfe2b0c6413"
 SRC_URI = "https://download.visualstudio.microsoft.com/download/pr/${DOTNET_FETCH_ID}/dotnet-sdk-${PV}-linux-arm64.tar.gz;unpack=0"
 
-DOTNET_RUNTIME = "7.0.0"
+DOTNET_RUNTIME = "7.0.1"
 
-INSANE_SKIP:${PN} += "libdir staticdev"
+COMPATIBLE_HOST ?= "(aarch64).*-linux"
 
-DEPENDS = "patchelf-native"
+RRECOMMENDS_dotnet-dev[nodeprrecs] = "1"
 
-# RDEPENDS:${PN} = "\
-#     icu \
-#     libgssapi-krb5 \
-#     openssl \
-#     zlib \
-# "
+DEPENDS += "\
+    zlib \
+"
 
 RDEPENDS:${PN} = "\
     glibc \
@@ -28,15 +25,27 @@ RDEPENDS:${PN} = "\
     libgcc \
     libstdc++ \
     openssl \
-    zlib \
 "
 
 FILES:${PN} += "\
     ${datadir}/dotnet \
 "
 
-# do_configure[noexec] = "1"
-# do_compile[noexec] = "1"
+FILES:${PN}-dev = "\
+    ${datadir}/dotnet/sdk \
+    ${datadir}/dotnet/sdk-manifests \
+    ${datadir}/dotnet/templates \
+"
+
+FILES:${PN}-dbg = "\
+    ${datadir}/dotnet/.debug \
+"
+
+INSANE_SKIP:${PN} = "file-rdeps staticdev libdir"
+INSANE_SKIP:${PN}-dbg = "libdir"
+
+do_configure[noexec] = "1"
+do_compile[noexec] = "1"
 
 do_install() {
     
@@ -44,9 +53,7 @@ do_install() {
     tar --no-same-owner -xpvzf ${WORKDIR}/dotnet-sdk-${PV}-linux-arm64.tar.gz -C ${D}${datadir}/dotnet
     chmod +x ${D}${datadir}/dotnet/dotnet
 
+    # Symlinks
     install -d ${D}${bindir}
     ln -rs ${D}${datadir}/dotnet/dotnet ${D}${bindir}/dotnet
-    
-    # Hack to fix liblttng-ust dependency issues
-    patchelf --remove-needed liblttng-ust.so.0 ${D}${datadir}/dotnet/shared/Microsoft.NETCore.App/${DOTNET_RUNTIME}/libcoreclrtraceptprovider.so
 }

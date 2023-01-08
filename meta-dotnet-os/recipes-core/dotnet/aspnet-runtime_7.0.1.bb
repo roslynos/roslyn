@@ -3,21 +3,16 @@ HOMEPAGE = "https://dotnet.microsoft.com/en-us/download/dotnet/7.0"
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda2f7b4f302"
 
-ASPNET_FETCH_ID = "2d6d851a-4eea-4a7a-9d5e-f1d6cdccda29/366a3dd90251ce11d8c5191ae9633efc"
+ASPNET_FETCH_ID = "e3d97ec5-f36c-45e5-bd0f-c58b0c468ec2/0b97b0983d826f854d9328165393bf1e"
 
-SRC_URI[sha256sum] = "6e8698b13ddd26d2809f5e53f8a0e5a7c7703ab8f20ba7f08c2ff49002cf5caa"
+SRC_URI[sha256sum] = "b9fb623b50050e50a802fe744a71c9f99ddc5906ce209343a56800e8f3b21cef"
 SRC_URI = "https://download.visualstudio.microsoft.com/download/pr/${ASPNET_FETCH_ID}/aspnetcore-runtime-${PV}-linux-arm64.tar.gz;unpack=0"
 
-INSANE_SKIP:${PN} = "already-stripped libdir staticdev"
+COMPATIBLE_HOST ?= "(aarch64).*-linux"
 
-DEPENDS = "patchelf-native"
-
-# RDEPENDS:${PN} = "\
-#     icu \
-#     libgssapi-krb5 \
-#     openssl \
-#     zlib \
-# "
+DEPENDS += "\
+    zlib \
+"
 
 RDEPENDS:${PN} = "\
     glibc \
@@ -26,14 +21,21 @@ RDEPENDS:${PN} = "\
     libgcc \
     libstdc++ \
     openssl \
-    zlib \
 "
 
 FILES:${PN} += "\
     ${datadir}/dotnet \
 "
-# do_configure[noexec] = "1"
-# do_compile[noexec] = "1"
+
+FILES_${PN}-dbg = "\
+    ${datadir}/dotnet/.debug \
+"
+
+INSANE_SKIP:${PN} = "file-rdeps libdir"
+INSANE_SKIP:${PN}-dbg = "libdir"
+
+do_configure[noexec] = "1"
+do_compile[noexec] = "1"
 
 do_install() {
     
@@ -41,10 +43,8 @@ do_install() {
     tar --no-same-owner -xpvzf ${WORKDIR}/aspnetcore-runtime-${PV}-linux-arm64.tar.gz -C ${D}${datadir}/dotnet
     chmod +x ${D}${datadir}/dotnet/dotnet
 
+    # Symlinks
     install -d ${D}${bindir}
     ln -rs ${D}${datadir}/dotnet/dotnet ${D}${bindir}/dotnet
-
-    # Hack to fix liblttng-ust dependency issues
-    patchelf --remove-needed liblttng-ust.so.0 ${D}${datadir}/dotnet/shared/Microsoft.NETCore.App/${PV}/libcoreclrtraceptprovider.so
 
 }
