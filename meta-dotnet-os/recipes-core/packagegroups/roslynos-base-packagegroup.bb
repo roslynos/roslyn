@@ -10,12 +10,14 @@ PACKAGES = "\
 	roslynos-base-packagegroup \
 	roslynos-base-connectivity \
 	roslynos-base-gpio \
-	roslynos-base-utilities"
+	roslynos-base-utilities \
+	roslynos-base-remotehost"
 
 RDEPENDS:${PN} = "\
 	roslynos-base-connectivity \
 	roslynos-base-gpio \
-	roslynos-base-utilities"
+	roslynos-base-utilities \
+	roslynos-base-remotehost"
 
 SUMMARY:roslynos-base-connectivity = "Connectivity Packages"
 RDEPENDS:roslynos-base-connectivity = "\
