@@ -21,7 +21,7 @@ source ./poky/oe-init-build-env $BUILD_DIR
 # MACHINE=raspberrypi4-64 bitbake package-index
 
 MACHINE=reterminal-64 bitbake dotnet-image-minimal
-MACHINE=reterminal-64 bitbake dotnet-image-full
+# MACHINE=reterminal-64 bitbake dotnet-image-full
 
 # Create the package index
 MACHINE=reterminal-64 bitbake package-index
