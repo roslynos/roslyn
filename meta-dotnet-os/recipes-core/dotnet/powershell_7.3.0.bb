@@ -1,10 +1,10 @@
-DESCRIPTION = ".NET Core Debugger (v17.2.10518.1) - Linux x64 Binaries"
-HOMEPAGE = "https://learn.microsoft.com/en-us/dotnet/iot/debugging?tabs=self-contained&pivots=vscode"
+DESCRIPTION = "Microsoft PowerShell - Linux x64 Binaries"
+HOMEPAGE = "https://learn.microsoft.com/en-us/powershell/?view=powershell-7.3"
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda2f7b4f302"
 
 SRC_URI[sha256sum] = "dc84e26df576ef8cc353850eeb5f6659f322ff999913442f472b158f943d109f"
-SRC_URI = "https://github.com/PowerShell/PowerShell/releases/download/v7.3.0/powershell-7.3.0-linux-arm64.tar.gz;unpack=0"
+SRC_URI = "https://github.com/PowerShell/PowerShell/releases/download/v${PV}powershell-${PV}-linux-arm64.tar.gz;unpack=0"
 
 COMPATIBLE_HOST ?= "(aarch64).*-linux"
 

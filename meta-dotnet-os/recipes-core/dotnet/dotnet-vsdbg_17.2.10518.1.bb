@@ -1,4 +1,4 @@
-DESCRIPTION = ".NET Core Debugger (v17.2.10518.1) - Linux x64 Binaries"
+DESCRIPTION = "Microsoft .NET Core Debugger (v17.2.10518.1) - Linux x64 Binaries"
 HOMEPAGE = "https://learn.microsoft.com/en-us/dotnet/iot/debugging?tabs=self-contained&pivots=vscode"
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda2f7b4f302"

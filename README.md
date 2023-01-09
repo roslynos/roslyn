@@ -45,6 +45,11 @@ You can update the RoslynOS sources with the following command:
 ./repo-mgr.sh update
 ```
 
+# Using screen command to connect via console
+```bash
+sudo screen /dev/ttyUSB0 115200
+```
+
 # Give a Star! :star:
 
 If you like or are using this project to start your solution, please give it a star. Thanks!

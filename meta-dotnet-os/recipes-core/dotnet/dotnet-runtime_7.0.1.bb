@@ -1,4 +1,4 @@
-DESCRIPTION = ".NET Core 7.0 Runtime (v7.0.0)"
+DESCRIPTION = "Microsoft .NET Core 7.0 Runtime"
 HOMEPAGE = "https://dotnet.microsoft.com/en-us/download/dotnet/7.0"
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda2f7b4f302"

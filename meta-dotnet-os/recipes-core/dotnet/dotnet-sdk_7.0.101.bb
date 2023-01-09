@@ -1,4 +1,4 @@
-DESCRIPTION = ".NET Core 7.0 SDK (v7.0.0) which includes runtimes"
+DESCRIPTION = "Microsoft .NET Core 7.0 SDK including .NET Runtime"
 HOMEPAGE = "https://dotnet.microsoft.com/en-us/download/dotnet/7.0"
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda2f7b4f302"
@@ -7,8 +7,6 @@ DOTNET_FETCH_ID = "caa0e6fb-770c-4b21-ba55-30154a7a9e11/3231af451861147352aaf43c
 
 SRC_URI[sha256sum] = "45417621eeae8344d228be4bba284e8cc6d4523699c6e27db3d7ecfe2b0c6413"
 SRC_URI = "https://download.visualstudio.microsoft.com/download/pr/${DOTNET_FETCH_ID}/dotnet-sdk-${PV}-linux-arm64.tar.gz;unpack=0"
-
-DOTNET_RUNTIME = "7.0.1"
 
 COMPATIBLE_HOST ?= "(aarch64).*-linux"
 
